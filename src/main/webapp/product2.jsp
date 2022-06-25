@@ -1,6 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib
+uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
   <head>
-    <title>Clientes</title>
+    <title>Producto</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -53,11 +55,11 @@
     }
   </style>
   <body>
-    <nav></nav>
-    <header>
-      <h1>Clientes</h1>
-    </header>
+    <nav><%@ include file="static/html/navbar.html" %></nav>
     <main class="container">
+      <header>
+        <h1>Productos</h1>
+      </header>
       <section>
         <h2>Create</h2>
         <div class="center">
@@ -74,7 +76,7 @@
       <section>
         <h2>Read</h2>
         <form class="col-md-4 center">
-          <label for="search" class="form-label">Buscar Clientes:</label>
+          <label for="search" class="form-label">Buscar Productos:</label>
           <div class="input-group mb-3">
             <input
               type="text"
@@ -102,7 +104,7 @@
         <h2>Delete</h2>
         <form class="col-md-4 center">
           <label for="search" class="form-label" style="color: white"
-            >Eliminar Cliente:</label
+            >Eliminar Producto:</label
           >
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="ID" />
@@ -112,7 +114,7 @@
       </section>
     </main>
     <!-- The Modal -->
-    <div
+    <dialog
       class="modal fade"
       id="insertForm"
       data-bs-backdrop="static"
@@ -136,46 +138,85 @@
           <!-- Modal body -->
           <form action="CustomersS" method="get" class="modal-body center">
             <input type="hidden" name="crud" value="create" />
-            <div class="mb-3">
-              <label for="cName" class="form-label">Nombre: </label>
+            <div class="mb-3 mt-3">
+              <label for="cName" class="form-label">Nombre:</label>
               <input
                 type="text"
-                id="cName"
                 class="form-control"
-                placeholder="Pepito Perez"
+                id="cName"
+                placeholder="Ingrese el nombre del producto"
                 name="name"
               />
             </div>
             <div class="mb-3">
-              <label for="cRuc" class="form-label">Ruc:</label>
+              <label for="cDes" class="form-label">Descripcion:</label>
               <input
                 type="text"
                 class="form-control"
-                id="cRuc"
-                placeholder="9999999999"
-                name="ruc"
-                required
+                id="cDes"
+                placeholder="Ingrese la descripcion"
+                name="description"
               />
             </div>
             <div class="mb-3">
-              <label for="cTelf" class="form-label">Telefono:</label>
+              <label for="cValueP" class="form-label">Valor Ref.Compra:</label>
               <input
-                type="text"
+                type="number"
                 class="form-control"
-                id="cTelf"
-                placeholder="0999999999"
-                name="contact"
+                id="cValueP"
+                placeholder="Ingrese el valor referencial de compra"
+                name="valueP"
               />
             </div>
             <div class="mb-3">
-              <label for="cDir" class="form-label">Direccion:</label>
+              <label for="cValueS" class="form-label">Valor Ref.Venta:</label>
               <input
-                type="text"
+                type="number"
                 class="form-control"
-                id="cDir"
-                placeholder="Av.Rodrigo de Chavez"
-                name="address"
+                id="cValueS"
+                placeholder="Ingrese el valor referencial de venta"
+                name="valueS"
               />
+            </div>
+            <div class="mb-3">
+              <label for="cStock" class="form-label">Stock:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="cStock"
+                placeholder="Ingrese la cantidad de productos"
+                name="stock"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">IVA:</label>
+              <div class="form-check">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="cIvaYes"
+                  name="iva"
+                  value="SI"
+                  checked
+                />Si
+                <br />
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="CIvaNo"
+                  name="iva"
+                  value="NO"
+                />No
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="cType" class="form-label">Tipo: </label>
+              <select class="form-select" id="cType" name="type">
+                <option value="CONSUMO">CONSUMO</option>
+                <option value="EMERGENCIA">EMERGENCIA</option>
+                <option value="USO COMUN">USO COMUN</option>
+                <option value="DURABLES">DURABLES</option>
+              </select>
             </div>
           </form>
 
@@ -192,9 +233,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </dial>
     <!-- The Modal -->
-    <div
+    <dialog
       class="modal fade"
       id="updateForm"
       data-bs-backdrop="static"
@@ -207,7 +248,7 @@
         <div class="modal-content">
           <!-- Modal Header -->
           <div class="modal-header">
-            <h4 class="modal-title title-center">Insertar Cliente</h4>
+            <h4 class="modal-title title-center">Actualizar Producto</h4>
             <button
               type="button"
               class="btn-close"
@@ -224,50 +265,89 @@
                 type="number"
                 class="form-control"
                 id="uID"
-                placeholder="1234567"
+                placeholder="Ingrese el ID del producto"
                 name="ID"
               />
             </div>
-            <div class="mb-3">
-              <label for="uName" class="form-label">Nombre: </label>
+            <div class="mb-3 mt-3">
+              <label for="uName" class="form-label">Nombre:</label>
               <input
                 type="text"
-                id="uName"
                 class="form-control"
-                placeholder="Pepito Perez"
+                id="uName"
+                placeholder="Ingrese el nombre del producto"
                 name="name"
               />
             </div>
             <div class="mb-3">
-              <label for="uRuc" class="form-label">Ruc:</label>
+              <label for="uDes" class="form-label">Descripcion:</label>
               <input
                 type="text"
                 class="form-control"
-                id="uRuc"
-                placeholder="9999999999"
-                name="ruc"
-                required
+                id="uDes"
+                placeholder="Ingrese la descripcion"
+                name="description"
               />
             </div>
             <div class="mb-3">
-              <label for="uTelf" class="form-label">Telefono:</label>
+              <label for="uValueP" class="form-label">Valor Ref.Compra:</label>
               <input
-                type="text"
+                type="number"
                 class="form-control"
-                id="uTelf"
-                placeholder="0999999999"
-                name="contact"
+                id="uValueP"
+                placeholder="Ingrese el valor referencial de compra"
+                name="valueP"
               />
             </div>
             <div class="mb-3">
-              <label for="uDir" class="form-label">Direccion:</label>
+              <label for="uValueS" class="form-label">Valor Ref.Venta:</label>
               <input
-                type="text"
+                type="number"
                 class="form-control"
-                id="uDir"
-                placeholder="Av.Rodrigo de Chavez"
-                name="address"
+                id="uValueS"
+                placeholder="Ingrese el valor referencial de venta"
+                name="valueS"
               />
+            </div>
+            <div class="mb-3">
+              <label for="uStock" class="form-label">Stock:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="uStock"
+                placeholder="Ingrese la cantidad de productos"
+                name="stock"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">IVA:</label>
+              <div class="form-check">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="uIvaYes"
+                  name="iva"
+                  value="SI"
+                  checked
+                />Si
+                <br />
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="uIvaNo"
+                  name="iva"
+                  value="NO"
+                />No
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="uType" class="form-label">Tipo: </label>
+              <select class="form-select" id="uType" name="type">
+                <option value="CONSUMO">CONSUMO</option>
+                <option value="EMERGENCIA">EMERGENCIA</option>
+                <option value="USO COMUN">USO COMUN</option>
+                <option value="DURABLES">DURABLES</option>
+              </select>
             </div>
           </form>
 
@@ -284,7 +364,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </dialog>
     <footer></footer>
   </body>
 </html>
