@@ -16,19 +16,32 @@
     ></script>
   </head>
   <style>
-    /*     * {
-      border: 1px solid black;
-    } */
+    body {
+      background-image: url("/src/main/webapp/static/images/background.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: bottom center, 50%, 50%;
+    }
     h1,
     h2 {
       text-align: center;
       margin-top: 2rem;
       margin-bottom: 1rem;
     }
-    .btn-center,
     .center {
       margin-left: auto !important;
       margin-right: auto !important;
+      text-align: center;
+    }
+    .modal-content input,
+    .modal-content {
+      background-color: #faf4ed;
+    }
+    .modal-header,
+    .modal-header * {
+      background-color: #f2e9e1;
+    }
+    .title-center {
       text-align: center;
     }
   </style>
@@ -40,7 +53,7 @@
     <main class="container">
       <section>
         <h2>Create</h2>
-        <div class="btn-center">
+        <div class="center">
           <button
             type="button"
             class="btn btn-primary"
@@ -59,7 +72,7 @@
             <div class="modal-content">
               <!-- Modal Header -->
               <div class="modal-header">
-                <h4 class="modal-title">Insertar Cliente</h4>
+                <h4 class="modal-title title-center">Insertar Cliente</h4>
                 <button
                   type="button"
                   class="btn-close"
@@ -75,7 +88,7 @@
                     type="text"
                     id="Cname"
                     class="form-control"
-                    placeholder="nombre"
+                    placeholder="Pepito Perez"
                     name="name"
                   />
                 </div>
@@ -85,7 +98,7 @@
                     type="text"
                     class="form-control"
                     id="iRuc"
-                    placeholder="Ingrese su RUC"
+                    placeholder="9999999999"
                     name="ruc"
                   />
                 </div>
@@ -95,7 +108,7 @@
                     type="text"
                     class="form-control"
                     id="iTelf"
-                    placeholder="Ingrese su numero de Telefono"
+                    placeholder="0999999999"
                     name="contact"
                   />
                 </div>
@@ -105,23 +118,21 @@
                     type="text"
                     class="form-control"
                     id="iDir"
-                    placeholder="Ingrese su Direccion"
+                    placeholder="Av.Rodrigo de Chavez"
                     name="address"
                   />
-                </div>
-                <div class="btn-center">
-                  <button type="submit" class="btn btn-success">Crear</button>
                 </div>
               </form>
 
               <!-- Modal footer -->
               <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Crear</button>
                 <button
                   type="button"
                   class="btn btn-danger"
                   data-bs-dismiss="modal"
                 >
-                  Close
+                  Cancelar
                 </button>
               </div>
             </div>
@@ -130,10 +141,16 @@
       </section>
       <section>
         <h2>Read</h2>
-        <form class="col-md-8 center">
+        <form class="col-md-6 center">
           <label for="search" class="form-label">Buscar Clientes:</label>
-          <input type="text" id="search" placeholder="nombre, id, telefono" />
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="nombre, id, telefono"
+            />
+            <button class="btn btn-secondary" type="submit">Buscar</button>
+          </div>
         </form>
       </section>
       <section>
@@ -141,6 +158,13 @@
       </section>
       <section>
         <h2>Delete</h2>
+        <form class="col-md-4 center">
+          <label for="search" class="form-label">Buscar Clientes:</label>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="ID" />
+            <button class="btn btn-danger" type="submit">Buscar</button>
+          </div>
+        </form>
       </section>
     </main>
     <footer></footer>
