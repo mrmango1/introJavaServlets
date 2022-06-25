@@ -5,55 +5,8 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <title>Producto</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
+    <%@include file="static/html/libs.html" %>
   </head>
-  <style>
-    body {
-      background-image: url("static/images/background.svg");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: bottom center, 50%, 50%;
-    }
-    h1,
-    h2 {
-      text-align: center;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-    .center {
-      margin-left: auto !important;
-      margin-right: auto !important;
-      text-align: center;
-    }
-    .modal-content input,
-    .modal-content {
-      background-color: #faf4ed;
-    }
-    .modal-header,
-    .modal-header * {
-      background-color: #f2e9e1;
-    }
-    .title-center {
-      text-align: center;
-    }
-    .modal-backdrop {
-      backdrop-filter: blur(5px);
-      background-color: #01223770;
-    }
-    .modal-backdrop.in {
-      opacity: 1 !important;
-    }
-  </style>
   <body>
     <nav><%@ include file="static/html/navbar.html" %></nav>
     <main class="container">
@@ -114,7 +67,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       </section>
     </main>
     <!-- The Modal -->
-    <dialog
+    <div
       class="modal fade"
       id="insertForm"
       data-bs-backdrop="static"
@@ -127,7 +80,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <div class="modal-content">
           <!-- Modal Header -->
           <div class="modal-header">
-            <h4 class="modal-title title-center">Insertar Cliente</h4>
+            <h4 class="modal-title title-center">Insertar Producto</h4>
             <button
               type="button"
               class="btn-close"
@@ -136,7 +89,12 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
           </div>
 
           <!-- Modal body -->
-          <form action="CustomersS" method="get" class="modal-body center">
+          <form
+            id="form-cCustomer"
+            action="CustomersS"
+            method="get"
+            class="modal-body center"
+          >
             <input type="hidden" name="crud" value="create" />
             <div class="mb-3 mt-3">
               <label for="cName" class="form-label">Nombre:</label>
@@ -144,7 +102,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 type="text"
                 class="form-control"
                 id="cName"
-                placeholder="Ingrese el nombre del producto"
+                placeholder="Coca Cola"
                 name="name"
               />
             </div>
@@ -154,7 +112,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 type="text"
                 class="form-control"
                 id="cDes"
-                placeholder="Ingrese la descripcion"
+                placeholder="Bebida Hidratante"
                 name="description"
               />
             </div>
@@ -164,7 +122,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 type="number"
                 class="form-control"
                 id="cValueP"
-                placeholder="Ingrese el valor referencial de compra"
+                placeholder="5.65"
                 name="valueP"
               />
             </div>
@@ -174,7 +132,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 type="number"
                 class="form-control"
                 id="cValueS"
-                placeholder="Ingrese el valor referencial de venta"
+                placeholder="7.86"
                 name="valueS"
               />
             </div>
@@ -184,7 +142,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 type="number"
                 class="form-control"
                 id="cStock"
-                placeholder="Ingrese la cantidad de productos"
+                placeholder="321"
                 name="stock"
               />
             </div>
@@ -222,7 +180,14 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
           <!-- Modal footer -->
           <div class="modal-footer">
-            <button type="submit" class="btn btn-success">Crear</button>
+            <button
+              type="submit"
+              class="btn btn-success"
+              form="form-cCustomer"
+              value="crud"
+            >
+              Crear
+            </button>
             <button
               type="button"
               class="btn btn-danger"
@@ -233,9 +198,9 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
           </div>
         </div>
       </div>
-    </dial>
+    </div>
     <!-- The Modal -->
-    <dialog
+    <div
       class="modal fade"
       id="updateForm"
       data-bs-backdrop="static"
@@ -265,7 +230,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 type="number"
                 class="form-control"
                 id="uID"
-                placeholder="Ingrese el ID del producto"
+                placeholder="123456"
                 name="ID"
               />
             </div>
@@ -275,7 +240,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 type="text"
                 class="form-control"
                 id="uName"
-                placeholder="Ingrese el nombre del producto"
+                placeholder="Coca Cola"
                 name="name"
               />
             </div>
@@ -285,7 +250,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 type="text"
                 class="form-control"
                 id="uDes"
-                placeholder="Ingrese la descripcion"
+                placeholder="Bebida Hidratante"
                 name="description"
               />
             </div>
@@ -295,7 +260,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 type="number"
                 class="form-control"
                 id="uValueP"
-                placeholder="Ingrese el valor referencial de compra"
+                placeholder="34.56"
                 name="valueP"
               />
             </div>
@@ -305,7 +270,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 type="number"
                 class="form-control"
                 id="uValueS"
-                placeholder="Ingrese el valor referencial de venta"
+                placeholder="74.43"
                 name="valueS"
               />
             </div>
@@ -315,7 +280,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 type="number"
                 class="form-control"
                 id="uStock"
-                placeholder="Ingrese la cantidad de productos"
+                placeholder="123"
                 name="stock"
               />
             </div>
@@ -364,7 +329,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
           </div>
         </div>
       </div>
-    </dialog>
+    </div>
     <footer></footer>
   </body>
 </html>
