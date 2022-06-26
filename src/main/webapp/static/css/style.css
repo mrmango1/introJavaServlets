@@ -18,7 +18,7 @@ main {
   margin-right: auto !important;
   text-align: center;
 }
-.modal-content input,
+.modal-content input:not([type="radio"]),
 .modal-content select,
 .modal-content {
   background-color: #faf4ed !important;

@@ -74,12 +74,7 @@
       </section>
     </main>
     <footer></footer>
-    <%@ include file="static/html/jsLibs.html" %>
-    <%@ include file="templates/product/create.jsp" %>
-    <%@ include file="templates/read.jsp" %>
-    <%@ include file="templates/product/update.jsp" %>
-    <%@ include file="templates/toast/success.jsp" %>
-    <%@ include file="templates/toast/error.jsp" %>
-    ${resp}
+    <%@ include file="templates/product/main.jsp" %>
+    <%@ include file="templates/common/main.jsp" %>
   </body>
 </html>

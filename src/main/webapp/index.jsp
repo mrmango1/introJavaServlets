@@ -6,19 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <%@include file="static/html/cssLibs.html" %>
   </head>
-  <style>
-    h1,
-    h2 {
-      text-align: center;
-      margin-top: 40px;
-      margin-bottom: 30px;
-    }
-    .btn-center {
-      text-align: center;
-    }
-  </style>
+
   <body>
-    <nav><%@ include file="static/html/navbar.html" %></div>
+    <%@ include file="static/html/navbar.html" %>
     <main>
       <header>
         <hgroup>
@@ -26,8 +16,8 @@
          <h2>Home</h2>
         </hgroup>
       </header>
-      <figure class="center">
-        <img src="static/images/kitty-typing.gif">
+      <figure class="center container">
+        <img src="static/images/mad-typing.gif" class="rounded img-fluid">
         <figcaption>Working Hard!</figcaption>
       </figure>
     </main>

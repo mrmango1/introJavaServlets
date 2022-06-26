@@ -7,7 +7,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <%@include file="static/html/cssLibs.html" %>
-
 </head>
 <body>
 <%@ include file="static/html/navbar.html" %>
@@ -78,12 +77,7 @@
     </section>
 </main>
 <footer></footer>
-<%@ include file="static/html/jsLibs.html" %>
-<%@ include file="templates/customer/create.jsp" %>
-<%@ include file="templates/read.jsp" %>
-<%@ include file="templates/customer/update.jsp" %>
-<%@ include file="templates/toast/success.jsp" %>
-<%@ include file="templates/toast/error.jsp" %>
-${resp}
+<%@ include file="templates/customer/main.jsp" %>
+<%@ include file="templates/common/main.jsp" %>
 </body>
 </html>
