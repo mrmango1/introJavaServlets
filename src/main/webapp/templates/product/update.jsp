@@ -62,6 +62,7 @@
                             id="uValueP"
                             placeholder="34.56"
                             name="valueP"
+                            step=0.01
                     />
                 </div>
                 <div class="mb-3">
@@ -83,7 +84,6 @@
                             id="uStock"
                             placeholder="123"
                             name="stock"
-                            step=0.01
                     />
                 </div>
                 <div class="mb-3">

@@ -57,6 +57,7 @@
                             id="cValueP"
                             placeholder="5.65"
                             name="valueP"
+                            step=0.01
                     />
                 </div>
                 <div class="mb-3">
@@ -78,7 +79,6 @@
                             id="cStock"
                             placeholder="321"
                             name="stock"
-                            step=0.01
                     />
                 </div>
                 <div class="mb-3">

@@ -4,7 +4,6 @@ package com.itsqmet.controller;
 import com.itsqmet.dao.ProductDAO;
 import com.itsqmet.model.Product;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -13,14 +12,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static com.itsqmet.controller.utils.showToast;
+
 @WebServlet(name = "Product", urlPatterns = "/Product")
 public class ProductsServlet extends HttpServlet {
 
+  String root = "/product.jsp";
   // GET = localhost:8080/POOII_JSF/ProductsS?crud=del&txtId=16
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-    String menu = request.getParameter("crud");
-    switch (menu) {
+    switch (request.getParameter("crud")) {
       case "create":
         create(request, response);
         break;
@@ -38,29 +39,16 @@ public class ProductsServlet extends HttpServlet {
 
   private void create(HttpServletRequest request, HttpServletResponse response) {
     try {
-      response.setContentType("text/html");
-      PrintWriter pw = response.getWriter();
       String name = request.getParameter("name");
       String description = request.getParameter("description");
-      int valueP = Integer.parseInt(request.getParameter("valueP"));
-      int valueS = Integer.parseInt(request.getParameter("valueS"));
+      double valueP = Double.parseDouble((request.getParameter("valueP")));
+      double valueS = Double.parseDouble((request.getParameter("valueS")));
       int stockP = Integer.parseInt(request.getParameter("stock"));
       String iva = request.getParameter("iva");
       String type = request.getParameter("type");
       Product pd = new Product(name, description, valueP, valueS,stockP,iva,type);
-      ProductDAO pdDAO = new ProductDAO();
-      boolean resp = pdDAO.create(pd);
-      if (resp) {
-        pw.println("<script type=\"text/javascript\">");
-        pw.println("alert('Producto Insertado');");
-        pw.println("location='product.jsp';");
-        pw.println("</script>");
-      } else {
-        pw.println("<script type=\"text/javascript\">");
-        pw.println("alert('No se ha podido ingresar el producto');");
-        pw.println("location='product.jsp';");
-        pw.println("</script>");
-      }
+      RequestDispatcher rd = showToast(request,root,new ProductDAO().create(pd));
+      rd.forward(request, response);
     } catch (Exception ex) {
       ex.printStackTrace(System.out);
     }
@@ -88,7 +76,7 @@ public class ProductsServlet extends HttpServlet {
       productTbl.add("<script>showReadModal()</script>");
       request.setAttribute("tHeader", productHeader);
       request.setAttribute("tBody", productTbl);
-      RequestDispatcher rd = request.getRequestDispatcher("/product2.jsp");
+      RequestDispatcher rd = request.getRequestDispatcher("/product.jsp");
       rd.forward(request, response);
     } catch (Exception ex) {
       ex.printStackTrace(System.out);
@@ -97,30 +85,17 @@ public class ProductsServlet extends HttpServlet {
 
   private void update(HttpServletRequest request, HttpServletResponse response) {
     try {
-      response.setContentType("text/html");
-      PrintWriter pw = response.getWriter();
       int id = Integer.parseInt(request.getParameter("ID"));
       String name = request.getParameter("name");
       String description = request.getParameter("description");
-      int valueP = Integer.parseInt(request.getParameter("valueP"));
-      int valueS = Integer.parseInt(request.getParameter("valueS"));
+      double valueP = Double.parseDouble((request.getParameter("valueP")));
+      double valueS = Double.parseDouble((request.getParameter("valueS")));
       int stockP = Integer.parseInt(request.getParameter("stock"));
       String iva = request.getParameter("iva");
       String type = request.getParameter("type");
       Product pd = new Product(id, name, description, valueP, valueS,stockP,iva,type);
-      ProductDAO pdDAO = new ProductDAO();
-      boolean resp = pdDAO.update(pd);
-      if (resp) {
-        pw.println("<script type=\"text/javascript\">");
-        pw.println("alert('Producto Actualizado');");
-        pw.println("location='product.jsp';");
-        pw.println("</script>");
-      } else {
-        pw.println("<script type=\"text/javascript\">");
-        pw.println("alert('No se ha podido actualizar el Producto');");
-        pw.println("location='product.jsp';");
-        pw.println("</script>");
-      }
+      RequestDispatcher rd = showToast(request,root,new ProductDAO().update(pd));
+      rd.forward(request, response);
     } catch (Exception ex) {
       ex.printStackTrace(System.out);
     }
@@ -128,22 +103,9 @@ public class ProductsServlet extends HttpServlet {
 
   private void delete(HttpServletRequest request, HttpServletResponse response) {
     try {
-      response.setContentType("text/html");
-      PrintWriter pw = response.getWriter();
       int id = Integer.parseInt(request.getParameter("ID"));
-      ProductDAO pdDAO = new ProductDAO();
-      boolean resp = pdDAO.delete(id);
-      if (resp) {
-        pw.println("<script type=\"text/javascript\">");
-        pw.println("alert('Producto Eliminado');");
-        pw.println("location='product.jsp';");
-        pw.println("</script>");
-      } else {
-        pw.println("<script type=\"text/javascript\">");
-        pw.println("alert('No se ha podido eliminar el producto');");
-        pw.println("location='product.jsp';");
-        pw.println("</script>");
-      }
+      RequestDispatcher rd = showToast(request,root,new ProductDAO().delete(id));
+      rd.forward(request, response);
     } catch (Exception ex) {
       ex.printStackTrace(System.out);
     }
