@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ProductsS", urlPatterns = "/ProductsS")
+@WebServlet(name = "Product", urlPatterns = "/Product")
 public class ProductsServlet extends HttpServlet {
 
   // GET = localhost:8080/POOII_JSF/ProductsS?crud=del&txtId=16
@@ -53,12 +53,12 @@ public class ProductsServlet extends HttpServlet {
       if (resp) {
         pw.println("<script type=\"text/javascript\">");
         pw.println("alert('Producto Insertado');");
-        pw.println("location='productView.jsp';");
+        pw.println("location='product.jsp';");
         pw.println("</script>");
       } else {
         pw.println("<script type=\"text/javascript\">");
         pw.println("alert('No se ha podido ingresar el producto');");
-        pw.println("location='productView.jsp';");
+        pw.println("location='product.jsp';");
         pw.println("</script>");
       }
     } catch (Exception ex) {
@@ -70,6 +70,7 @@ public class ProductsServlet extends HttpServlet {
     try {
       String search = request.getParameter("search");
       ArrayList<String> productTbl = new ArrayList<>();
+      String[] productHeader = {"ID", "Nombre", "Descripcion", "Valor Ref.Compra", "Valor Ref.Venta", "Stock", "Iva", "Tipo"};
       ProductDAO pdDAO = new ProductDAO();
       List<Product> productList = pdDAO.get(search);
       for (Product pd: productList) {
@@ -84,8 +85,10 @@ public class ProductsServlet extends HttpServlet {
         productTbl.add("<td>"+pd.getType()+"</td>");
         productTbl.add("</tr>");
       }
-      request.setAttribute("productList", productTbl);
-      RequestDispatcher rd = request.getRequestDispatcher("/productView.jsp");
+      productTbl.add("<script>showReadModal()</script>");
+      request.setAttribute("tHeader", productHeader);
+      request.setAttribute("tBody", productTbl);
+      RequestDispatcher rd = request.getRequestDispatcher("/product2.jsp");
       rd.forward(request, response);
     } catch (Exception ex) {
       ex.printStackTrace(System.out);
@@ -110,12 +113,12 @@ public class ProductsServlet extends HttpServlet {
       if (resp) {
         pw.println("<script type=\"text/javascript\">");
         pw.println("alert('Producto Actualizado');");
-        pw.println("location='productView.jsp';");
+        pw.println("location='product.jsp';");
         pw.println("</script>");
       } else {
         pw.println("<script type=\"text/javascript\">");
         pw.println("alert('No se ha podido actualizar el Producto');");
-        pw.println("location='productView.jsp';");
+        pw.println("location='product.jsp';");
         pw.println("</script>");
       }
     } catch (Exception ex) {
@@ -133,12 +136,12 @@ public class ProductsServlet extends HttpServlet {
       if (resp) {
         pw.println("<script type=\"text/javascript\">");
         pw.println("alert('Producto Eliminado');");
-        pw.println("location='productView.jsp';");
+        pw.println("location='product.jsp';");
         pw.println("</script>");
       } else {
         pw.println("<script type=\"text/javascript\">");
         pw.println("alert('No se ha podido eliminar el producto');");
-        pw.println("location='productView.jsp';");
+        pw.println("location='product.jsp';");
         pw.println("</script>");
       }
     } catch (Exception ex) {
