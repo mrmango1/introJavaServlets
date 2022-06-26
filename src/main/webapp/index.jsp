@@ -17,8 +17,8 @@
         </hgroup>
       </header>
       <figure class="center container">
-        <img src="static/images/mad-typing.gif" class="rounded img-fluid">
-        <figcaption>Working Hard!</figcaption>
+        <img src="static/images/kitty-typing.gif" class="rounded img-fluid" alt="kitty typing">
+        <figcaption>Deber</figcaption>
       </figure>
     </main>
   </body>
