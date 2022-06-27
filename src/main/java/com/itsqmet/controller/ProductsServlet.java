@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import static com.itsqmet.controller.utils.showToast;
+import static com.itsqmet.controller.utils.*;
 
 @WebServlet(name = "Product", urlPatterns = "/Product")
 public class ProductsServlet extends HttpServlet {
@@ -41,9 +41,9 @@ public class ProductsServlet extends HttpServlet {
     try {
       String name = request.getParameter("name");
       String description = request.getParameter("description");
-      double valueP = Double.parseDouble((request.getParameter("valueP")));
+      double valueP = emptyDouble(request.getParameter("valueP"));
       double valueS = Double.parseDouble((request.getParameter("valueS")));
-      int stockP = Integer.parseInt(request.getParameter("stock"));
+      int stockP = emptyInteger(request.getParameter("stock"));
       String iva = request.getParameter("iva");
       String type = request.getParameter("type");
       Product pd = new Product(name, description, valueP, valueS,stockP,iva,type);
@@ -88,9 +88,9 @@ public class ProductsServlet extends HttpServlet {
       int id = Integer.parseInt(request.getParameter("ID"));
       String name = request.getParameter("name");
       String description = request.getParameter("description");
-      double valueP = Double.parseDouble((request.getParameter("valueP")));
+      double valueP = emptyDouble(request.getParameter("valueP"));
       double valueS = Double.parseDouble((request.getParameter("valueS")));
-      int stockP = Integer.parseInt(request.getParameter("stock"));
+      int stockP = emptyInteger(request.getParameter("stock"));
       String iva = request.getParameter("iva");
       String type = request.getParameter("type");
       Product pd = new Product(id, name, description, valueP, valueS,stockP,iva,type);

@@ -14,4 +14,16 @@ public class utils {
         }
         return request.getRequestDispatcher(root);
     }
+    static Double emptyDouble(String req){
+        if(req.equals("")){
+            return 0.0;
+        }
+        return Double.parseDouble(req);
+    }
+    static Integer emptyInteger(String req){
+        if(req.equals("")){
+            return 0;
+        }
+        return Integer.parseInt(req);
+    }
 }

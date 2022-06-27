@@ -37,6 +37,7 @@
                             id="cName"
                             placeholder="Coca Cola"
                             name="name"
+                            required
                     />
                 </div>
                 <div class="mb-3">
@@ -47,6 +48,7 @@
                             id="cDes"
                             placeholder="Bebida Hidratante"
                             name="description"
+                            required
                     />
                 </div>
                 <div class="mb-3">
@@ -69,6 +71,7 @@
                             placeholder="7.86"
                             name="valueS"
                             step=0.01
+                            required
                     />
                 </div>
                 <div class="mb-3">

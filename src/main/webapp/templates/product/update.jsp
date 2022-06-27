@@ -32,6 +32,7 @@
                             id="uID"
                             placeholder="123456"
                             name="ID"
+                            required
                     />
                 </div>
                 <div class="mb-3 mt-3">
@@ -42,6 +43,7 @@
                             id="uName"
                             placeholder="Coca Cola"
                             name="name"
+                            required
                     />
                 </div>
                 <div class="mb-3">
@@ -52,6 +54,7 @@
                             id="uDes"
                             placeholder="Bebida Hidratante"
                             name="description"
+                            required
                     />
                 </div>
                 <div class="mb-3">
@@ -74,6 +77,7 @@
                             placeholder="74.43"
                             name="valueS"
                             step=0.01
+                            requierd
                     />
                 </div>
                 <div class="mb-3">

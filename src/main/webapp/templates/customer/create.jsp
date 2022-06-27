@@ -32,6 +32,7 @@
                             class="form-control"
                             placeholder="Pepito Perez"
                             name="name"
+                            required
                     />
                 </div>
                 <div class="mb-3">
@@ -42,6 +43,8 @@
                             id="cRuc"
                             placeholder="9999999999"
                             name="ruc"
+                            min="13"
+                            max="13"
                             required
                     />
                 </div>
@@ -53,6 +56,9 @@
                             id="cTelf"
                             placeholder="0999999999"
                             name="contact"
+                            min="10"
+                            max="10"
+                            required
                     />
                 </div>
                 <div class="mb-3">
@@ -63,6 +69,7 @@
                             id="cDir"
                             placeholder="Av.Rodrigo de Chavez"
                             name="address"
+                            required
                     />
                 </div>
             </form>
