@@ -21,8 +21,13 @@ main {
 .modal-content input:not([type="radio"]),
 .modal-content select,
 .modal-content {
-  background-color: #faf4ed !important;
+  background-color: #faf4ed;
 }
+
+.form-control:disabled{
+  background-color: #f2e9e1 !important;
+}
+
 .modal-header,
 .modal-header * {
   background-color: #f2e9e1;

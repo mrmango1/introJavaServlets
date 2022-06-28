@@ -1,13 +1,17 @@
 package com.itsqmet.model;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 // @author mrmango
-public class Customer {
+public class Customer implements Serializable {
 
   private int id;
-  private String name, ruc, contact, address, search;
+  private String name;
+  private String ruc;
+  private String contact;
+  private String address;
 
   public Customer() {
   }
@@ -62,14 +66,6 @@ public class Customer {
 
   public void setAddress(String address) {
     this.address = address;
-  }
-
-  public String getSearch() {
-    return search;
-  }
-
-  public void setSearch(String search) {
-    this.search = search;
   }
 
   public void getFromDB(ResultSet rs) throws SQLException {

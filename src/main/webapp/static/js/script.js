@@ -1,8 +1,3 @@
-function showReadModal() {
-    let readModal = new bootstrap.Modal(document.getElementById("readForm"), {});
-    readModal.show();
-}
-
 (function () {
     'use strict'
 
@@ -33,4 +28,14 @@ function errorToast() {
     let toastLiveExample = document.getElementById('errorToast')
     let toast = new bootstrap.Toast(toastLiveExample)
     toast.show()
+}
+
+function showReadModal() {
+    let readModal = new bootstrap.Modal(document.getElementById("readModal"), {});
+    readModal.show();
+}
+
+function showUpdateModal() {
+    let readModal = new bootstrap.Modal(document.getElementById("updateModal"), {});
+    readModal.show();
 }

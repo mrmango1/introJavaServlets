@@ -34,6 +34,9 @@ public class CustomersServlet extends HttpServlet {
             case "delete":
                 delete(request, response);
                 break;
+            case "pUpdate":
+                prepareUpdate(request, response);
+                break;
         }
     }
 
@@ -60,7 +63,7 @@ public class CustomersServlet extends HttpServlet {
             String search = request.getParameter("search");
             String[] customerHeader = {"ID", "Nombres", "RUC", "Contacto", "Direccion"};
             ArrayList<String> customerTbl = new ArrayList<>();
-            List<Customer> customerList = new CustomerDAO().get(search);
+            List<Customer> customerList = new CustomerDAO().getAll(search);
             for (Customer cs : customerList) {
                 customerTbl.add("<tr>");
                 customerTbl.add("<td>" + cs.getId() + "</td>");
@@ -99,6 +102,19 @@ public class CustomersServlet extends HttpServlet {
         try {
             int id = Integer.parseInt(request.getParameter("ID"));
             RequestDispatcher rd = showToast(request,root,new CustomerDAO().delete(id));
+            rd.forward(request, response);
+        } catch (Exception ex) {
+            ex.printStackTrace(System.out);
+        }
+    }
+    private void prepareUpdate(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String search = request.getParameter("ID");
+            Customer cs = new CustomerDAO().get(search);
+            String showModalScript = "<script>showUpdateModal()</script>";
+            request.setAttribute("customer", cs);
+            request.setAttribute("runScript", showModalScript);
+            RequestDispatcher rd = request.getRequestDispatcher(root);
             rd.forward(request, response);
         } catch (Exception ex) {
             ex.printStackTrace(System.out);

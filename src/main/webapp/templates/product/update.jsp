@@ -2,7 +2,7 @@
 <!-- The Modal -->
 <div
         class="modal fade"
-        id="updateForm"
+        id="updateModal"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabindex="-1"
@@ -32,7 +32,8 @@
                             id="uID"
                             placeholder="123456"
                             name="ID"
-                            required
+                            value="${product.id}"
+                            readonly
                     />
                 </div>
                 <div class="mb-3 mt-3">
@@ -43,6 +44,7 @@
                             id="uName"
                             placeholder="Coca Cola"
                             name="name"
+                            value="${product.name}"
                             required
                     />
                 </div>
@@ -54,6 +56,7 @@
                             id="uDes"
                             placeholder="Bebida Hidratante"
                             name="description"
+                            value="${product.description}"
                             required
                     />
                 </div>
@@ -65,6 +68,7 @@
                             id="uValueP"
                             placeholder="34.56"
                             name="valueP"
+                            value="${product.valueP}"
                             step=0.01
                     />
                 </div>
@@ -77,6 +81,7 @@
                             placeholder="74.43"
                             name="valueS"
                             step=0.01
+                            value="${product.valueS}"
                             requierd
                     />
                 </div>
@@ -88,6 +93,7 @@
                             id="uStock"
                             placeholder="123"
                             name="stock"
+                            value="${product.stock}"
                     />
                 </div>
                 <div class="mb-3">

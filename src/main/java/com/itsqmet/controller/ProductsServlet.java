@@ -1,6 +1,7 @@
 package com.itsqmet.controller;
 
 // @author mrmango
+import com.itsqmet.dao.CustomerDAO;
 import com.itsqmet.dao.ProductDAO;
 import com.itsqmet.model.Product;
 
@@ -34,6 +35,9 @@ public class ProductsServlet extends HttpServlet {
       case "delete":
         delete(request, response);
         break;
+      case "pUpdate":
+        prepareUpdate(request, response);
+        break;
     }
   }
 
@@ -60,7 +64,7 @@ public class ProductsServlet extends HttpServlet {
       ArrayList<String> productTbl = new ArrayList<>();
       String[] productHeader = {"ID", "Nombre", "Descripcion", "Valor Ref.Compra", "Valor Ref.Venta", "Stock", "Iva", "Tipo"};
       ProductDAO pdDAO = new ProductDAO();
-      List<Product> productList = pdDAO.get(search);
+      List<Product> productList = pdDAO.getAll(search);
       for (Product pd: productList) {
         productTbl.add("<tr>");
         productTbl.add("<td>"+pd.getId()+"</td>");
@@ -105,6 +109,20 @@ public class ProductsServlet extends HttpServlet {
     try {
       int id = Integer.parseInt(request.getParameter("ID"));
       RequestDispatcher rd = showToast(request,root,new ProductDAO().delete(id));
+      rd.forward(request, response);
+    } catch (Exception ex) {
+      ex.printStackTrace(System.out);
+    }
+  }
+
+  private void prepareUpdate(HttpServletRequest request, HttpServletResponse response) {
+    try {
+      String search = request.getParameter("ID");
+      Product pd = new ProductDAO().get(search);
+      String showModalScript = "<script>showUpdateModal()</script>";
+      request.setAttribute("product", pd);
+      request.setAttribute("runScript", showModalScript);
+      RequestDispatcher rd = request.getRequestDispatcher(root);
       rd.forward(request, response);
     } catch (Exception ex) {
       ex.printStackTrace(System.out);

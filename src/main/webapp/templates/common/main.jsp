@@ -5,3 +5,4 @@
 <%@ include file="/templates/common/toast/success.jsp" %>
 <%@ include file="/templates/common/toast/error.jsp" %>
 ${resp}
+${runScript}

@@ -3,7 +3,7 @@
 <!-- The Modal -->
 <div
         class="modal fade"
-        id="readForm"
+        id="readModal"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabindex="-1"

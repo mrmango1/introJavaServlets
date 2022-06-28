@@ -2,7 +2,7 @@
 <!-- The Modal -->
 <div
         class="modal fade"
-        id="updateForm"
+        id="updateModal"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabindex="-1"
@@ -32,7 +32,8 @@
                             id="uID"
                             placeholder="1234567"
                             name="ID"
-                            required
+                            value="${customer.id}"
+                            readonly
                     />
                 </div>
                 <div class="mb-3">
@@ -43,6 +44,7 @@
                             class="form-control"
                             placeholder="Pepito Perez"
                             name="name"
+                            value="${customer.name}"
                             required
                     />
                 </div>
@@ -56,6 +58,7 @@
                             name="ruc"
                             min="13"
                             max="13"
+                            value="${customer.ruc}"
                             required
                     />
                 </div>
@@ -69,6 +72,7 @@
                             min="10"
                             max="10"
                             name="contact"
+                            value="${customer.contact}"
                             required
                     />
                 </div>
@@ -80,6 +84,7 @@
                             id="uDir"
                             placeholder="Av.Rodrigo de Chavez"
                             name="address"
+                            value="${customer.address}"
                             required
                     />
                 </div>

@@ -1,9 +1,10 @@
 package com.itsqmet.model;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Product {
+public class Product implements Serializable {
 
   private int id;
   private int stock;

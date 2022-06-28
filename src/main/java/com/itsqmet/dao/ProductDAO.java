@@ -35,7 +35,7 @@ public class ProductDAO implements DAO<Product>{
   }
 
   @Override
-  public List<Product> get(String search) throws SQLException {
+  public List<Product> getAll(String search) throws SQLException {
     List<Product> productList = new ArrayList<>();
     String sql =
       "SELECT * FROM productos "
@@ -63,6 +63,18 @@ public class ProductDAO implements DAO<Product>{
     return productList;
   }
 
+  @Override
+  public Product get(String search) throws SQLException {
+    Product pd = new Product();
+    String sql =
+            "SELECT * FROM productos WHERE id_prod ="
+                    + search;
+    ResultSet rs = con.query(sql);
+    while(rs.next()){
+      pd.getFromDB(rs);
+    }
+    return pd;
+  }
   @Override
   public boolean update(Product pd){
     String sql =
