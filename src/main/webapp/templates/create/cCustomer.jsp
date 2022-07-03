@@ -2,7 +2,7 @@
 <!-- The Modal -->
 <div
         class="modal fade"
-        id="insertForm"
+        id="createModal"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabindex="-1"
@@ -22,8 +22,7 @@
             </div>
 
             <!-- Modal body -->
-            <form id="form-cCustomer" action="Customer" method="get" class="modal-body center">
-                <input type="hidden" name="crud" value="create" />
+            <form id="createForm" action="Customer" onsubmit="doPost(event,this)" class="modal-body center">
                 <div class="mb-3">
                     <label for="cName" class="form-label">Nombre: </label>
                     <input
@@ -76,7 +75,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button form="form-cCustomer" type="submit" class="btn btn-success">Crear</button>
+                <button form="createForm" type="submit" class="btn btn-success">Crear</button>
                 <button
                         type="button"
                         class="btn btn-danger"

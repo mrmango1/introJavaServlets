@@ -22,8 +22,7 @@
             </div>
 
             <!-- Modal body -->
-            <form id="form-uCustomer" action="Customer" method="get" class="modal-body center">
-                <input type="hidden" name="crud" value="update" />
+            <form id="updateForm" action="Customer" onsubmit="doPut(event,this)" class="modal-body center">
                 <div class="mb-3 mt-3">
                     <label for="uID" class="form-label">ID:</label>
                     <input
@@ -31,8 +30,7 @@
                             class="form-control"
                             id="uID"
                             placeholder="1234567"
-                            name="ID"
-                            value="${customer.id}"
+                            name="id"
                             readonly
                     />
                 </div>
@@ -44,7 +42,6 @@
                             class="form-control"
                             placeholder="Pepito Perez"
                             name="name"
-                            value="${customer.name}"
                             required
                     />
                 </div>
@@ -58,7 +55,6 @@
                             name="ruc"
                             min="13"
                             max="13"
-                            value="${customer.ruc}"
                             required
                     />
                 </div>
@@ -72,7 +68,6 @@
                             min="10"
                             max="10"
                             name="contact"
-                            value="${customer.contact}"
                             required
                     />
                 </div>
@@ -84,7 +79,6 @@
                             id="uDir"
                             placeholder="Av.Rodrigo de Chavez"
                             name="address"
-                            value="${customer.address}"
                             required
                     />
                 </div>
@@ -92,7 +86,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button form="form-uCustomer" type="submit" class="btn btn-primary">Actualizar</button>
+                <button form="updateForm" type="submit" class="btn btn-primary">Actualizar</button>
                 <button
                         type="button"
                         class="btn btn-danger"

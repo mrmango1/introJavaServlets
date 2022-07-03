@@ -27,7 +27,6 @@ public class CustomerDAO implements DAO<Customer> {
         + "')";
     return con.execute(sql);
   }
-
   @Override
   public List<Customer> getAll(String search) throws SQLException {
     List<Customer> customerList = new ArrayList<>();
@@ -47,7 +46,7 @@ public class CustomerDAO implements DAO<Customer> {
     }
     return customerList;
   }
-
+  @Override
   public Customer get(String search) throws SQLException {
     Customer cs = new Customer();
     String sql =

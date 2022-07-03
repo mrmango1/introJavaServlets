@@ -5,16 +5,15 @@
   <title>Producto</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <%@include file="static/html/cssLibs.html" %>
+  <%@include file="static/libs/cssLibs.html" %>
 </head>
 <body>
-<%@ include file="static/html/navbar.html" %>
+<%@ include file="static/libs/navbar.html" %>
 <main class="container">
   <header>
     <h1>Productos</h1>
   </header>
   <section>
-    <h2>Create</h2>
     <div class="center">
       <button
         type="button"
@@ -22,62 +21,49 @@
         data-bs-toggle="modal"
         data-bs-target="#insertForm"
       >
-        Insertar
+        Añadir Producto
       </button>
     </div>
-  </section>
-  <section>
-    <h2>Read</h2>
-    <form action="Product" method="get" class="col-md-4 center">
-      <input type="hidden" name="crud" value="read"/>
-      <label for="pSearch" class="form-label">Buscar Productos:</label>
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="nombre, id, telefono"
-          id="pSearch"
-          name="search"
-        />
-        <button class="btn btn-secondary" type="submit">Buscar</button>
-      </div>
-    </form>
-  </section>
-  <section>
-    <h2>Update</h2>
-    <form class="col-md-4 center needs-validation" action="Product" method="get" novalidate>
-      <input type="hidden" name="crud" value="pUpdate"/>
-      <label for="cpUpdate" class="form-label" style="color: white"
-      >Actualizar Producto:</label
-      >
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="ID" id="cpUpdate" name="ID" required/>
-        <button class="btn btn-primary" type="submit">Buscar</button>
-        <div class="invalid-feedback">
-          Ingrese un ID.
-        </div>
-      </div>
-    </form>
-  </section>
-  <section>
-    <h2 style="color: white">Delete</h2>
-    <form class="col-md-4 center needs-validation" action="Product" method="get" novalidate>
-      <input type="hidden" name="crud" value="delete"/>
-      <label for="pDelete" class="form-label"
-      >Eliminar Producto:</label
-      >
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="ID" id="pDelete" name="ID" required/>
-        <button class="btn btn-danger" type="submit">Eliminar</button>
-        <div class="invalid-feedback">
-          Ingrese un ID.
-        </div>
-      </div>
-    </form>
+    <label for="dSearch" class="form-label">Buscar Productos:</label>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="nombre, id, telefono"
+        id="dSearch"
+        name="search"
+      />
+      <button class="btn btn-secondary"
+              onclick="searchTable('Product')">Buscar</button>
+    </div>
+    <table
+      id="bodyTable"
+      data-toggle="table"
+      data-height="460"
+      data-ajax="productTable"
+      data-search="true"
+      data-side-pagination="server"
+      data-pagination="true">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>NOMBRES</th>
+        <th>DESCRIPCION</th>
+        <th>VALOR.REF.COMPRA</th>
+        <th>VALOR.REF.VENTA</th>
+        <th>STOCK</th>
+        <th>IVA</th>
+        <th>TYPE</th>
+      </tr>
+      </thead>
+      <tbody id="readTable">
+      </tbody>
+    </table>
   </section>
 </main>
 <footer></footer>
-<%@ include file="templates/product/main.jsp" %>
+<%@ include file="/templates/create/cProduct.jsp" %>
+<%@ include file="/templates/update/uProduct.jsp" %>
 <%@ include file="templates/common/main.jsp" %>
 </body>
 </html>
