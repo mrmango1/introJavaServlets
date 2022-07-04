@@ -1,11 +1,10 @@
 package com.itsqmet.model;
 
-import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 // @author mrmango
-public class Customer implements Serializable {
+public class Customer {
 
   private int id;
   private String name;
@@ -14,19 +13,6 @@ public class Customer implements Serializable {
   private String address;
 
   public Customer() {
-  }
-  public Customer(String name, String ruc, String contact, String address) {
-    this.name = name;
-    this.ruc = ruc;
-    this.contact = contact;
-    this.address = address;
-  }
-  public Customer(int id,String name, String ruc, String contact, String address) {
-    this.id = id;
-    this.name = name;
-    this.ruc = ruc;
-    this.contact = contact;
-    this.address = address;
   }
   public int getId() {
     return id;

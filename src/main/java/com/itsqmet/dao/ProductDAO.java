@@ -8,12 +8,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDAO implements DAO<Product>{
+public class ProductDAO implements DAO<Product> {
 
   private final CBDD con = new CBDD();
 
   @Override
-  public boolean create(Product pd){
+  public boolean create(Product pd) {
     String sql =
       "INSERT INTO productos"
         + "(nombre_prod, descripcion_prod,valor_ref_comp_prod,valor_ref_venta_prod,stock_prod,tiene_iva_prod,tipo_prod) VALUES('"
@@ -35,7 +35,7 @@ public class ProductDAO implements DAO<Product>{
   }
 
   @Override
-  public List<Product> getAll(String search) throws SQLException {
+  public List<Product> getAll(String search){
     List<Product> productList = new ArrayList<>();
     String sql =
       "SELECT * FROM productos "
@@ -55,10 +55,14 @@ public class ProductDAO implements DAO<Product>{
         + search
         + "%'";
     ResultSet rs = con.query(sql);
-    while(rs.next()){
-      Product pd = new Product();
-      pd.getFromDB(rs);
-      productList.add(pd);
+    try {
+      while (rs.next()) {
+        Product pd = new Product();
+        pd.getFromDB(rs);
+        productList.add(pd);
+      }
+    } catch (Exception ex) {
+      ex.printStackTrace(System.out);
     }
     return productList;
   }
@@ -67,16 +71,17 @@ public class ProductDAO implements DAO<Product>{
   public Product get(String search) throws SQLException {
     Product pd = new Product();
     String sql =
-            "SELECT * FROM productos WHERE id_prod ="
-                    + search;
+      "SELECT * FROM productos WHERE id_prod ="
+        + search;
     ResultSet rs = con.query(sql);
-    while(rs.next()){
+    while (rs.next()) {
       pd.getFromDB(rs);
     }
     return pd;
   }
+
   @Override
-  public boolean update(Product pd){
+  public boolean update(Product pd) {
     String sql =
       "UPDATE productos SET nombre_prod='"
         + pd.getName()
@@ -98,7 +103,7 @@ public class ProductDAO implements DAO<Product>{
   }
 
   @Override
-  public boolean delete(int productID){
+  public boolean delete(int productID) {
     String sql = "DELETE FROM `productos` WHERE `id_prod` =" + productID;
     return con.execute(sql);
   }

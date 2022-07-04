@@ -1,10 +1,9 @@
 package com.itsqmet.model;
 
-import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Product implements Serializable {
+public class Product {
 
   private int id;
   private int stock;
@@ -16,43 +15,6 @@ public class Product implements Serializable {
   private double valueS;
 
   public Product() {}
-
-  public Product(
-      String name,
-      String description,
-      double valueP,
-      double valueS,
-      int stock,
-      String iva,
-      String type) {
-    this.name = name;
-    this.description = description;
-    this.valueP = valueP;
-    this.valueS = valueS;
-    this.stock = stock;
-    this.iva = iva;
-    this.type = type;
-  }
-
-  public Product(
-      int id,
-      String name,
-      String description,
-      double valueP,
-      double valueS,
-      int stock,
-      String iva,
-      String type) {
-    this.id = id;
-    this.name = name;
-    this.description = description;
-    this.valueP = valueP;
-    this.valueS = valueS;
-    this.stock = stock;
-    this.iva = iva;
-    this.type = type;
-  }
-
   public int getId() {
     return id;
   }

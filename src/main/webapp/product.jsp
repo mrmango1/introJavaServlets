@@ -19,41 +19,35 @@
         type="button"
         class="btn btn-success"
         data-bs-toggle="modal"
-        data-bs-target="#insertForm"
+        data-bs-target="#createModal"
       >
         Añadir Producto
       </button>
     </div>
-    <label for="dSearch" class="form-label">Buscar Productos:</label>
-    <div class="input-group mb-3">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="nombre, id, telefono"
-        id="dSearch"
-        name="search"
-      />
-      <button class="btn btn-secondary"
-              onclick="searchTable('Product')">Buscar</button>
-    </div>
-    <table
-      id="bodyTable"
-      data-toggle="table"
-      data-height="460"
-      data-ajax="productTable"
-      data-search="true"
-      data-side-pagination="server"
-      data-pagination="true">
+    <table id="table"
+           data-toggle="table"
+           data-height="500"
+           data-search="true"
+           data-buttons="buttons"
+           data-pagination="true"
+           data-show-columns="true"
+           data-show-refresh="true"
+           data-show-columns-toggle-all="true"
+           data-side-pagination="server"
+           data-show-toggle="true"
+           data-show-fullscreen="true"
+           data-url="./Product">
       <thead>
       <tr>
-        <th>ID</th>
-        <th>NOMBRES</th>
-        <th>DESCRIPCION</th>
-        <th>VALOR.REF.COMPRA</th>
-        <th>VALOR.REF.VENTA</th>
-        <th>STOCK</th>
-        <th>IVA</th>
-        <th>TYPE</th>
+        <th data-field="id">ID</th>
+        <th data-field="name">NOMBRES</th>
+        <th data-field="description">DESCRIPCION</th>
+        <th data-field="valueP">VALOR.REF.COMPRA</th>
+        <th data-field="valueS">VALOR.REF.VENTA</th>
+        <th data-field="stock">STOCK</th>
+        <th data-field="iva">IVA</th>
+        <th data-field="type">TIPO</th>
+        <th data-field="operate" data-formatter="operateFormatter">ACCION</th>
       </tr>
       </thead>
       <tbody id="readTable">

@@ -28,7 +28,7 @@ public class CustomerDAO implements DAO<Customer> {
     return con.execute(sql);
   }
   @Override
-  public List<Customer> getAll(String search) throws SQLException {
+  public List<Customer> getAll(String search){
     List<Customer> customerList = new ArrayList<>();
     String sql =
       "SELECT * FROM `clientes` WHERE `nombres_cli` like '%"
@@ -39,10 +39,14 @@ public class CustomerDAO implements DAO<Customer> {
         + search
         + "%'";
     ResultSet rs = con.query(sql);
-    while (rs.next()) {
-      Customer cs = new Customer();
-      cs.getFromDB(rs);
-      customerList.add(cs);
+    try{
+      while (rs.next()) {
+        Customer cs = new Customer();
+        cs.getFromDB(rs);
+        customerList.add(cs);
+      }
+    }catch (Exception ex) {
+      ex.printStackTrace(System.out);
     }
     return customerList;
   }

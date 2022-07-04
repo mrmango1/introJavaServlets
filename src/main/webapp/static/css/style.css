@@ -13,31 +13,18 @@ main {
   padding-top: 1rem;
 }
 .center {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  text-align: center;
-}
-.modal-content input:not([type="radio"]),
-.modal-content select,
-.modal-content {
-  background-color: #faf4ed;
+  text-align: left;
 }
 
-.form-control:disabled{
-  background-color: #f2e9e1 !important;
-}
-
-.modal-header,
-.modal-header * {
-  background-color: #f2e9e1;
-}
 .title-center {
   text-align: center;
 }
-.modal-backdrop {
-  backdrop-filter: blur(5px);
-  background-color: #01223770;
+.actionBtn{
+  text-align: center;
+  width: 100px;
 }
-.modal-backdrop.in {
-  opacity: 1 !important;
+
+#addRow{
+  background-color: green;
+  border-color: green;
 }

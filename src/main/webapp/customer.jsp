@@ -24,28 +24,28 @@
         Añadir Cliente
       </button>
     </div>
-    <label for="dSearch" class="form-label">Buscar Clientes:</label>
-    <div class="input-group mb-3">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="nombre, id, telefono"
-        id="dSearch"
-        name="search"
-      />
-      <button class="btn btn-secondary"
-              onclick="searchTable('Customer')">Busqueda
-      </button>
-    </div>
-    <table id="bodyTable" class="table table-hover modal-body">
+    <table
+      id="table"
+      data-toggle="table"
+      data-height="500"
+      data-search="true"
+      data-buttons="buttons"
+      data-pagination="true"
+      data-show-columns="true"
+      data-show-refresh="true"
+      data-show-columns-toggle-all="true"
+      data-side-pagination="server"
+      data-show-toggle="true"
+      data-show-fullscreen="true"
+      data-url="./Customer">
       <thead>
       <tr>
-        <th>ID</th>
-        <th>NOMBRES</th>
-        <th>RUC</th>
-        <th>CONTACTO</th>
-        <th>DIRECCION</th>
-        <th>ACTION</th>
+        <th data-field="id">ID</th>
+        <th data-field="name">NOMBRES</th>
+        <th data-field="ruc">RUC</th>
+        <th data-field="contact">CONTACTO</th>
+        <th data-field="address">DIRECCION</th>
+        <th data-field="operate" data-formatter="operateFormatter">ACCION</th>
       </tr>
       </thead>
       <tbody id="readTable">

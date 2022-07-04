@@ -2,7 +2,7 @@
 <!-- The Modal -->
 <div
         class="modal fade"
-        id="insertForm"
+        id="createModal"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabindex="-1"
