@@ -22,8 +22,7 @@
             </div>
 
             <!-- Modal body -->
-            <form id="form-uProduct" action="Product" method="get" class="modal-body center">
-                <input type="hidden" name="crud" value="update" />
+            <form id="updateForm" action="Product" onsubmit="doPut(event,this)" class="modal-body">
                 <div class="mb-3 mt-3">
                     <label for="uID" class="form-label">ID:</label>
                     <input
@@ -31,8 +30,7 @@
                             class="form-control"
                             id="uID"
                             placeholder="123456"
-                            name="ID"
-                            value="${product.id}"
+                            name="id"
                             readonly
                     />
                 </div>
@@ -44,7 +42,6 @@
                             id="uName"
                             placeholder="Coca Cola"
                             name="name"
-                            value="${product.name}"
                             required
                     />
                 </div>
@@ -56,7 +53,6 @@
                             id="uDes"
                             placeholder="Bebida Hidratante"
                             name="description"
-                            value="${product.description}"
                             required
                     />
                 </div>
@@ -68,7 +64,6 @@
                             id="uValueP"
                             placeholder="34.56"
                             name="valueP"
-                            value="${product.valueP}"
                             step=0.01
                     />
                 </div>
@@ -81,7 +76,6 @@
                             placeholder="74.43"
                             name="valueS"
                             step=0.01
-                            value="${product.valueS}"
                             requierd
                     />
                 </div>
@@ -93,7 +87,6 @@
                             id="uStock"
                             placeholder="123"
                             name="stock"
-                            value="${product.stock}"
                     />
                 </div>
                 <div class="mb-3">
@@ -130,7 +123,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="submit" form="form-uProduct" class="btn btn-primary">Actualizar</button>
+                <button type="submit" form="updateForm" class="btn btn-primary">Actualizar</button>
                 <button
                         type="button"
                         class="btn btn-danger"

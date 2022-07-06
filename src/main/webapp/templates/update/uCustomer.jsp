@@ -22,7 +22,7 @@
             </div>
 
             <!-- Modal body -->
-            <form id="updateForm" action="Customer" onsubmit="doPut(event,this)" class="modal-body center">
+            <form id="updateForm" action="Customer" onsubmit="doPut(event,this)" class="modal-body">
                 <div class="mb-3 mt-3">
                     <label for="uID" class="form-label">ID:</label>
                     <input

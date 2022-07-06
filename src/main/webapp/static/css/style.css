@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 body {
   background-repeat: no-repeat;
   background-size: cover;
@@ -8,12 +9,14 @@ h2,
 h3 {
   text-align: center;
   padding: 0.8rem !important;
+  font-family: 'Lilita One', cursive;
+  font-size: 3.5em;
 }
 main {
   padding-top: 1rem;
 }
 .center {
-  text-align: left;
+  text-align: center;
 }
 
 .title-center {
@@ -27,4 +30,24 @@ main {
 #addRow{
   background-color: green;
   border-color: green;
+}
+.fixed-table-body::-webkit-scrollbar {
+  display: none;
+}
+
+.fixed-table-body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.nav-link {
+  color: #ffffff8C !important;
+}
+.nav-link:hover {
+  color: #fff !important;
+}
+table th div {
+  background-color: #212529;
+  color: white;
+  text-align: center;
+  border-color: #212529;
 }

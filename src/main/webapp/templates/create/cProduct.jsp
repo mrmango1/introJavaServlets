@@ -22,12 +22,7 @@
             </div>
 
             <!-- Modal body -->
-            <form
-                    id="form-cCustomer"
-                    action="Product"
-                    method="get"
-                    class="modal-body center"
-            >
+            <form id="createForm" action="Product" onsubmit="doPost(event,this)" class="modal-body">
                 <input type="hidden" name="crud" value="create" />
                 <div class="mb-3 mt-3">
                     <label for="cName" class="form-label">Nombre:</label>
@@ -121,7 +116,7 @@
                 <button
                         type="submit"
                         class="btn btn-success"
-                        form="form-cCustomer"
+                        form="createForm"
                         value="crud"
                 >
                     Crear

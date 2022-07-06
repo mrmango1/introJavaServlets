@@ -20,14 +20,13 @@ import javax.servlet.http.HttpServletResponse;
 public class CustomersServlet extends HttpServlet {
   // GET = http://localhost:8080/POOII_JSF_war_exploded/CustomersS?crud=sel&txtBuscar=
 
+  private static final Gson GSON = new GsonBuilder().serializeNulls().create();
+
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
     PrintWriter out = response.getWriter();
-    String search = request.getParameter("search");
-    GsonBuilder builder = new GsonBuilder().serializeNulls();
-    Gson gson = builder.create();
-    String json = gson.toJson(new CustomerDAO().getAll());
+    String json = GSON.toJson(new CustomerDAO().getAll());
     out.write(json);
     out.flush();
   }

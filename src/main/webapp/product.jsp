@@ -11,7 +11,7 @@
 <%@ include file="static/libs/navbar.html" %>
 <main class="container" id="Product">
   <header>
-    <h1>Productos</h1>
+    <h1><i class="fa fa-shopping-cart"></i> Productos</h1>
   </header>
   <section>
     <div id="toolbar">
@@ -30,12 +30,11 @@
            data-toggle="table"
            data-height="550"
            data-search="true"
-           data-buttons="buttons"
-           data-pagination="true"
+           data-show-search-button="true"
+           data-buttons-class="primary"
            data-show-refresh="true"
-           data-show-button-text="true"
-           data-show-columns-toggle-all="true"
-           data-side-pagination="server"
+           data-pagination="true"
+           data-show-columns="true"
            data-url="./Product">
       <thead>
       <tr>
@@ -47,7 +46,7 @@
         <th data-field="stock">STOCK</th>
         <th data-field="iva">IVA</th>
         <th data-field="type">TIPO</th>
-        <th data-field="operate" data-formatter="operateFormatter">ACCION</th>
+        <th data-field="operate" data-formatter="operateFormatter" data-width="222">ACCION</th>
       </tr>
       </thead>
       <tbody id="readTable">

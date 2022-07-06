@@ -24,13 +24,7 @@ public class ProductsServlet extends HttpServlet {
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
     PrintWriter out = response.getWriter();
-    String search = request.getParameter("search");
-    String json;
-    if(search==null){
-       json = GSON.toJson(new ProductDAO().getAll());
-    }else{
-       json = GSON.toJson(new ProductDAO().get(search));
-    }
+    String json = GSON.toJson(new ProductDAO().getAll());
     out.write(json);
     out.flush();
   }

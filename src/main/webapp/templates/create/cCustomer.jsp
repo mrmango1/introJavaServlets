@@ -22,7 +22,7 @@
             </div>
 
             <!-- Modal body -->
-            <form id="createForm" action="Customer" onsubmit="doPost(event,this)" class="modal-body center">
+            <form id="createForm" action="Customer" onsubmit="doPost(event,this)" class="modal-body">
                 <div class="mb-3">
                     <label for="cName" class="form-label">Nombre: </label>
                     <input

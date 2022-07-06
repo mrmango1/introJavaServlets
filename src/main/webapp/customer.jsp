@@ -11,32 +11,31 @@
 <%@ include file="static/libs/navbar.html" %>
 <main class="container" id="Customer">
   <header>
-    <h1>Clientes</h1>
+    <h1><i class="fa fa-users"></i> Clientes</h1>
   </header>
   <section>
-    <div class="center">
+    <div id="toolbar">
       <button
         type="button"
         class="btn btn-success"
         data-bs-toggle="modal"
-        data-bs-target="#createModal"
-      >
+        data-bs-target="#createModal">
+        <i class="fa fa-plus"></i>
         Añadir Cliente
       </button>
     </div>
     <table
       id="table"
+      data-toolbar="#toolbar"
+      data-locale="es-ES"
       data-toggle="table"
-      data-height="500"
+      data-height="550"
       data-search="true"
-      data-buttons="buttons"
+      data-show-search-button="true"
+      data-buttons-class="primary"
+      data-show-refresh="true"
       data-pagination="true"
       data-show-columns="true"
-      data-show-refresh="true"
-      data-show-columns-toggle-all="true"
-      data-side-pagination="server"
-      data-show-toggle="true"
-      data-show-fullscreen="true"
       data-url="./Customer">
       <thead>
       <tr>
@@ -45,7 +44,7 @@
         <th data-field="ruc">RUC</th>
         <th data-field="contact">CONTACTO</th>
         <th data-field="address">DIRECCION</th>
-        <th data-field="operate" data-formatter="operateFormatter">ACCION</th>
+        <th data-field="operate" data-formatter="operateFormatter" data-width="222">ACCION</th>
       </tr>
       </thead>
       <tbody id="readTable">
