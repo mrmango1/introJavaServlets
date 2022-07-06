@@ -4,7 +4,6 @@ import com.itsqmet.config.CBDD;
 import com.itsqmet.model.Product;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +34,25 @@ public class ProductDAO implements DAO<Product> {
   }
 
   @Override
-  public List<Product> getAll(String search){
+  public List<Product> getAll( ){
+    List<Product> productList = new ArrayList<>();
+    String sql =
+      "SELECT * FROM productos;";
+    ResultSet rs = con.query(sql);
+    try {
+      while (rs.next()) {
+        Product pd = new Product();
+        pd.getFromDB(rs);
+        productList.add(pd);
+      }
+    } catch (Exception ex) {
+      ex.printStackTrace(System.out);
+    }
+    return productList;
+  }
+
+  @Override
+  public List<Product> get(String search){
     List<Product> productList = new ArrayList<>();
     String sql =
       "SELECT * FROM productos "
@@ -65,19 +82,6 @@ public class ProductDAO implements DAO<Product> {
       ex.printStackTrace(System.out);
     }
     return productList;
-  }
-
-  @Override
-  public Product get(String search) throws SQLException {
-    Product pd = new Product();
-    String sql =
-      "SELECT * FROM productos WHERE id_prod ="
-        + search;
-    ResultSet rs = con.query(sql);
-    while (rs.next()) {
-      pd.getFromDB(rs);
-    }
-    return pd;
   }
 
   @Override

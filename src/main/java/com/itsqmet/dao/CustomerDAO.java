@@ -28,7 +28,24 @@ public class CustomerDAO implements DAO<Customer> {
     return con.execute(sql);
   }
   @Override
-  public List<Customer> getAll(String search){
+  public List<Customer> getAll(){
+    List<Customer> customerList = new ArrayList<>();
+    String sql =
+      "SELECT * FROM `clientes`";
+    ResultSet rs = con.query(sql);
+    try{
+      while (rs.next()) {
+        Customer cs = new Customer();
+        cs.getFromDB(rs);
+        customerList.add(cs);
+      }
+    }catch (Exception ex) {
+      ex.printStackTrace(System.out);
+    }
+    return customerList;
+  }
+  @Override
+  public List<Customer> get(String search) throws SQLException {
     List<Customer> customerList = new ArrayList<>();
     String sql =
       "SELECT * FROM `clientes` WHERE `nombres_cli` like '%"
@@ -49,18 +66,6 @@ public class CustomerDAO implements DAO<Customer> {
       ex.printStackTrace(System.out);
     }
     return customerList;
-  }
-  @Override
-  public Customer get(String search) throws SQLException {
-    Customer cs = new Customer();
-    String sql =
-      "SELECT * FROM `clientes` WHERE `id_cli` ="
-        + search;
-    ResultSet rs = con.query(sql);
-    while (rs.next()) {
-      cs.getFromDB(rs);
-    }
-    return cs;
   }
 
   @Override

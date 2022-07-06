@@ -5,37 +5,37 @@
   <title>Producto</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <%@include file="static/libs/cssLibs.html" %>
+  <%@include file="static/libs/headerLibs.html" %>
 </head>
 <body>
 <%@ include file="static/libs/navbar.html" %>
-<main class="container">
+<main class="container" id="Product">
   <header>
     <h1>Productos</h1>
   </header>
   <section>
-    <div class="center">
+    <div id="toolbar">
       <button
         type="button"
         class="btn btn-success"
         data-bs-toggle="modal"
-        data-bs-target="#createModal"
-      >
+        data-bs-target="#createModal">
+        <i class="fa fa-plus"></i>
         Añadir Producto
       </button>
     </div>
     <table id="table"
+           data-toolbar="#toolbar"
+           data-locale="es-ES"
            data-toggle="table"
-           data-height="500"
+           data-height="550"
            data-search="true"
            data-buttons="buttons"
            data-pagination="true"
-           data-show-columns="true"
            data-show-refresh="true"
+           data-show-button-text="true"
            data-show-columns-toggle-all="true"
            data-side-pagination="server"
-           data-show-toggle="true"
-           data-show-fullscreen="true"
            data-url="./Product">
       <thead>
       <tr>

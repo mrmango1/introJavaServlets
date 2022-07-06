@@ -1,9 +1,8 @@
 let updateData
 let rowToDelete;
-let name = document.getElementsByTagName("table")[0].id
-let $table = $("table")
+let name = document.getElementsByTagName("main")[0].id
 
-function succesToast(){
+function successToast(){
   let toastLiveExample = document.getElementById('successToast')
   let toast = new bootstrap.Toast(toastLiveExample)
   toast.show()
@@ -55,7 +54,7 @@ function doPut(e, form) {
     method: 'PUT',
     body: new FormData(form)
   }).then(response => {if (response.ok) {
-    succesToast();
+    successToast();
     updateTable()
     closeUpdateModal()
   }else{
@@ -69,7 +68,7 @@ function doPost(e, form) {
     method: 'POST',
     body: new FormData(form)
   }).then(response => {if (response.ok) {
-    succesToast();
+    successToast();
   }else{
     errorToast()
   }});
@@ -80,7 +79,7 @@ function doDelete(id) {
   fetch(`./${name}?id=${id}`, {
     method: 'DELETE',
   }).then(response => {if (response.ok) {
-    succesToast();
+    successToast();
     rowToDelete.remove()
   }else{
     errorToast()
@@ -108,7 +107,7 @@ function operateFormatter(value, row, index) {
 function buttons () {
   return {
     btnAdd: {
-      text: 'Add new row',
+      text: 'Añadir',
       icon: 'fa-plus',
       event: function () {
         showCreateModal()

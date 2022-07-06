@@ -9,9 +9,9 @@ public interface DAO<T> {
 
   boolean delete(int ID) throws SQLException;
 
-  List<T> getAll(String search) throws SQLException;
+  List<T> getAll() throws SQLException;
 
-  T get(String search) throws SQLException;
+  List<T> get(String search) throws SQLException;
 
   boolean update(T t) throws SQLException;
 }

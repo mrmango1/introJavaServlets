@@ -27,7 +27,7 @@ public class CustomersServlet extends HttpServlet {
     String search = request.getParameter("search");
     GsonBuilder builder = new GsonBuilder().serializeNulls();
     Gson gson = builder.create();
-    String json = gson.toJson(new CustomerDAO().getAll(search));
+    String json = gson.toJson(new CustomerDAO().getAll());
     out.write(json);
     out.flush();
   }
