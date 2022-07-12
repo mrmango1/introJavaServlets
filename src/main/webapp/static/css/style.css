@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
-body {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: bottom center, 50%, 50%;
-}
+/*body {*/
+/*  background-image: url("../images/background.png");*/
+/*  background-repeat: no-repeat;*/
+/*  background-size: cover;*/
+/*  background-position: bottom center, 50%, 50%;*/
+/*}*/
 h1,
 h2,
 h3 {
